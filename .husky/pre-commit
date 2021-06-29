@@ -4,3 +4,4 @@
 npx mrm@2 lint-staged
 npx lint-staged
 npx lint-staged
+npx lint-staged

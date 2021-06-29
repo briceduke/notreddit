@@ -24,12 +24,17 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "commit": "cz",
+    "commit": "git add . && cz",
     "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
+    "@mikro-orm/cli": "^4.5.6",
+    "@mikro-orm/core": "^4.5.6",
+    "@mikro-orm/migrations": "^4.5.6",
+    "@mikro-orm/postgresql": "^4.5.6",
     "express": "4.17.1",
+    "pg": "^8.6.0",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
@@ -51,6 +56,7 @@
     "cz-conventional-changelog": "3.3.0",
     "dotenv": "8.2.0",
     "eslint": "7.22.0",
+    "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "8.1.0",
     "husky": "^6.0.0",
     "jest": "27.0.3",

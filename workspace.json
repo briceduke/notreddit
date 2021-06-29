@@ -50,6 +50,27 @@
           }
         }
       }
+    },
+    "api-constants": {
+      "root": "libs/api-constants",
+      "sourceRoot": "libs/api-constants/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/api-constants/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api-constants"],
+          "options": {
+            "jestConfig": "libs/api-constants/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

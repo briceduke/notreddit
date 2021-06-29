@@ -4,6 +4,7 @@
   "plugins": ["@nrwl/nx"],
   "overrides": [
     {
+      "extends": "google",
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nrwl/nx/enforce-module-boundaries": [
