@@ -1,7 +1,7 @@
-import { apiConstants } from './api-constants';
+import { __prod__ } from './api-constants';
 
-describe('apiConstants', () => {
+describe('__prod__', () => {
   it('should work', () => {
-    expect(apiConstants()).toEqual('api-constants');
+    expect(__prod__).toEqual(process.env.NODE_ENV !== 'production');
   });
 });

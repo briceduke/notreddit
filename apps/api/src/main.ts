@@ -1,11 +1,10 @@
 import { MikroORM } from '@mikro-orm/core';
+import { ormConfig } from '../mikro-orm.config';
 
-(async function () {
-  const orm = await MikroORM.init({
-    dbName: 'notreddit',
-    // user: "",
-    // password: "",
-    type: 'postgresql',
-    debug: process.env.NODE_ENV !== 'production',
-  });
-})();
+try {
+  (async function () {
+    const orm = await MikroORM.init(ormConfig);
+  })();
+} catch (err) {
+  console.error(err);
+}

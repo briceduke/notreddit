@@ -74,5 +74,11 @@
   "lint-staged": {
     "*.js": "eslint --cache --fix",
     "*.format:write": "prettier --write"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./apps/api/mikro-orm.config.ts"
+    ]
   }
 }
