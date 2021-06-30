@@ -3,6 +3,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
+    "strict": true,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -18,7 +19,9 @@
     "paths": {
       "@notreddit/api-constants": ["libs/api-constants/src/index.ts"],
       "@notreddit/api-types": ["libs/api-types/src/index.ts"],
-      "@notreddit/web/web-shared": ["libs/web/web-shared/src/index.ts"]
+      "@notreddit/types": ["libs/types/src/index.ts"],
+      "@notreddit/web/web-shared": ["libs/web/web-shared/src/index.ts"],
+      "@notreddit/web/web-utils": ["libs/web/web-utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

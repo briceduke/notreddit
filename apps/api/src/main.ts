@@ -50,7 +50,8 @@ try {
           secure: !__prod__, // https only in prod
           sameSite: 'strict', // csrf
         },
-        secret: process.env.REDIS_SECRET,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        secret: process.env.REDIS_SECRET!,
         resave: false,
         saveUninitialized: false,
       })

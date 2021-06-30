@@ -25,7 +25,8 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "commit": "git add . && cz",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "gen": "graphql-codegen --config codegen.yml"
   },
   "private": true,
   "dependencies": {
@@ -60,7 +61,10 @@
     "@babel/preset-typescript": "7.12.13",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
-    "@graphql-codegen/cli": "^1.21.6",
+    "@graphql-codegen/cli": "1.21.6",
+    "@graphql-codegen/typescript": "1.22.4",
+    "@graphql-codegen/typescript-operations": "1.18.3",
+    "@graphql-codegen/typescript-urql": "^2.0.10",
     "@nrwl/cli": "12.5.0",
     "@nrwl/cypress": "12.5.0",
     "@nrwl/eslint-plugin-nx": "12.5.0",

@@ -17,11 +17,11 @@ export class Post extends BaseEntity {
 
   @Field(() => String)
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt: Date | undefined;
 
   @Field(() => String)
   @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt: Date | undefined;
 
   @Field()
   @Column()

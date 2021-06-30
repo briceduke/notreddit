@@ -1,53 +1,19 @@
 import argon2 from 'argon2';
-import {
-  Arg,
-  Ctx,
-  Field,
-  InputType,
-  Mutation,
-  ObjectType,
-  Query,
-  Resolver,
-} from 'type-graphql';
+import { Arg, Ctx, Mutation, Query, Resolver } from 'type-graphql';
 
 import { ApiContext } from '@notreddit/api-types';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import { FieldError, UserInput, UserResponse } from '@notreddit/types';
 
 import { User } from '../entities/User';
-
-@InputType()
-class UserInput {
-  @Field()
-  username: string;
-
-  @Field()
-  password: string;
-}
-
-@ObjectType()
-class FieldError {
-  @Field()
-  field: 'LOGIN' | 'REGISTER';
-
-  @Field()
-  message: string;
-}
-
-@ObjectType()
-class UserResponse {
-  @Field(() => [FieldError], { nullable: true })
-  errors?: FieldError[];
-
-  @Field(() => User, { nullable: true })
-  user?: User;
-}
 
 @Resolver()
 export class UserResolver {
   // Returns current user
   @Query(() => User, { nullable: true })
-  async me(@Ctx() { req }: ApiContext): Promise<User> {
+  async me(@Ctx() { req }: ApiContext): Promise<User | undefined> {
     const userId = req.session.userId;
-    if (!userId) return null;
+    if (!userId) return undefined;
     const user = await User.findOne({ id: userId });
     return user;
   }
@@ -65,7 +31,7 @@ export class UserResolver {
 
     if (username.toLowerCase().length < 3)
       errors.push({
-        field: 'REGISTER',
+        field: 'USERNAME',
         message: 'Username must be at least 3 characters!',
       });
 
@@ -75,21 +41,21 @@ export class UserResolver {
 
     if (findUser)
       errors.push({
-        field: 'REGISTER',
+        field: 'USERNAME',
         message: 'Username exists!',
       });
 
     // Validate password
     if (password.length < 6)
       errors.push({
-        field: 'REGISTER',
+        field: 'PASSWORD',
         message: 'Password must be at least 6 characters!',
       });
 
     const usernameInPasswordRegex = new RegExp(username, 'i');
     if (usernameInPasswordRegex.test(password))
       errors.push({
-        field: 'REGISTER',
+        field: 'PASSWORD',
         message: 'Username cannot be used in password!',
       });
 

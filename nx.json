@@ -36,6 +36,9 @@
     "api-types": {
       "tags": []
     },
+    "types": {
+      "tags": []
+    },
     "web": {
       "tags": []
     },
@@ -44,6 +47,9 @@
       "implicitDependencies": ["web"]
     },
     "web-web-shared": {
+      "tags": []
+    },
+    "web-web-utils": {
       "tags": []
     }
   }
