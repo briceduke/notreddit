@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@notreddit/api-constants": ["libs/api-constants/src/index.ts"]
+      "@notreddit/api-constants": ["libs/api-constants/src/index.ts"],
+      "@notreddit/api-types": ["libs/api-types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

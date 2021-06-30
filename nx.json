@@ -32,6 +32,9 @@
     },
     "api-constants": {
       "tags": []
+    },
+    "api-types": {
+      "tags": []
     }
   }
 }
