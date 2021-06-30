@@ -1,6 +1,6 @@
 # NotReddit
 
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![main workflows](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?branch=main)
 
 It's not Reddit, I promise.
 
