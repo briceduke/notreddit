@@ -1,9 +1,11 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
+import '../styles/globals.css'
+
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <html data-theme="synthwave">
       <Head>
         <title>Welcome to web!</title>
       </Head>
@@ -14,7 +16,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </main>
       </div>
-    </>
+    </html>
   );
 }
 
