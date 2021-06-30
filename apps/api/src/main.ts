@@ -8,7 +8,7 @@ import { __prod__ } from '@notreddit/api-constants';
 
 import { Post } from './app/entities/Post';
 import { User } from './app/entities/User';
-import { PingResolver, PostResolver } from './app/resolvers';
+import { PingResolver, PostResolver, UserResolver } from './app/resolvers';
 
 try {
   (async function () {
@@ -24,7 +24,7 @@ try {
 
     const apolloServer = new ApolloServer({
       schema: await buildSchema({
-        resolvers: [PingResolver, PostResolver],
+        resolvers: [PingResolver, PostResolver, UserResolver],
         validate: false,
       }),
     });

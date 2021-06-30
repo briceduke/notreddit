@@ -30,6 +30,7 @@
   "private": true,
   "dependencies": {
     "apollo-server-express": "^2.25.2",
+    "argon2": "^0.28.2",
     "express": "^4.17.1",
     "graphql": "^15.5.1",
     "pg": "^8.6.0",
