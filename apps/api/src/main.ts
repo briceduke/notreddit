@@ -7,6 +7,7 @@ import { createConnection } from 'typeorm';
 import { __prod__ } from '@notreddit/api-constants';
 
 import { Post } from './app/entities/Post';
+import { User } from './app/entities/User';
 import { PingResolver, PostResolver } from './app/resolvers';
 
 try {
@@ -16,7 +17,7 @@ try {
       database: 'notreddit',
       synchronize: true,
       logging: __prod__,
-      entities: [Post],
+      entities: [Post, User],
     });
 
     const app = express();
