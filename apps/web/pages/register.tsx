@@ -1,3 +1,4 @@
+import { InputField } from "@notreddit/web/web-shared";
 import { Formik, Form } from "formik";
 
 /* eslint-disable-next-line */
@@ -13,7 +14,7 @@ export function Register(props: RegisterProps) {
     >
       {({ values, handleChange }) => (
         <Form>
-          <input type="text" value={values.username} placeholder="Username" onChange={handleChange} id="username" />
+          <InputField name="username" placeholder="Username" label="Username" />
         </Form>
       )}
     </Formik>
