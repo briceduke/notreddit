@@ -37,6 +37,7 @@
     "document-register-element": "1.13.1",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
+    "formik": "^2.2.9",
     "graphql": "^15.5.1",
     "next": "10.2.0",
     "pg": "^8.6.0",
