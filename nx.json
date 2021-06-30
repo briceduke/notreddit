@@ -35,6 +35,16 @@
     },
     "api-types": {
       "tags": []
+    },
+    "web": {
+      "tags": []
+    },
+    "web-e2e": {
+      "tags": [],
+      "implicitDependencies": ["web"]
+    },
+    "web-web-shared": {
+      "tags": []
     }
   }
 }
