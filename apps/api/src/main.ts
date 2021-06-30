@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server-express';
 import connectRedis from 'connect-redis';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import redis from 'redis';
@@ -33,6 +34,13 @@ try {
     const redisClient = redis.createClient();
 
     app.use(
+      cors({
+        origin: 'http://localhost:4200',
+        credentials: true,
+      })
+    );
+
+    app.use(
       session({
         name: 'nr_qid',
         store: new redisStore({ client: redisClient, disableTouch: true }),
@@ -56,7 +64,10 @@ try {
       context: ({ req, res }): ApiContext => ({ req, res }),
     });
 
-    apolloServer.applyMiddleware({ app });
+    apolloServer.applyMiddleware({
+      app,
+      cors: false,
+    });
 
     app.listen(4000, () => {
       console.log(`API > Started on http://localhost:4000/graphql`);
