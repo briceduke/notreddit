@@ -1,12 +1,16 @@
 import argon2 from 'argon2';
 import {
   Arg,
+  Ctx,
   Field,
   InputType,
   Mutation,
   ObjectType,
+  Query,
   Resolver,
 } from 'type-graphql';
+
+import { ApiContext } from '@notreddit/api-types';
 
 import { User } from '../entities/User';
 
@@ -39,10 +43,20 @@ class UserResponse {
 
 @Resolver()
 export class UserResolver {
+  // Returns current user
+  @Query(() => User, { nullable: true })
+  async me(@Ctx() { req }: ApiContext): Promise<User> {
+    const userId = req.session.userId;
+    if (!userId) return null;
+    const user = await User.findOne({ id: userId });
+    return user;
+  }
+
   // Register
   @Mutation(() => UserResponse)
   async register(
-    @Arg('input', () => UserInput) { username, password }: UserInput
+    @Arg('input', () => UserInput) { username, password }: UserInput,
+    @Ctx() { req }: ApiContext
   ): Promise<UserResponse> {
     const errors: FieldError[] = [];
 
@@ -86,13 +100,16 @@ export class UserResolver {
 
     const user = await User.create({ username, password: hashedPass }).save();
 
+    req.session.userId = user.id;
+
     return { errors, user };
   }
 
   // Login
   @Mutation(() => UserResponse)
   async login(
-    @Arg('input', () => UserInput) { username, password }: UserInput
+    @Arg('input', () => UserInput) { username, password }: UserInput,
+    @Ctx() { req }: ApiContext
   ): Promise<UserResponse> {
     const user = await User.findOne({ username });
 
@@ -121,6 +138,8 @@ export class UserResolver {
         ],
       };
     }
+
+    req.session.userId = user.id;
 
     // If valid
     return {

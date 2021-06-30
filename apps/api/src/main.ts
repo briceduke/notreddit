@@ -34,12 +34,12 @@ try {
 
     app.use(
       session({
-        name: 'notreddit_qid',
+        name: 'nr_qid',
         store: new redisStore({ client: redisClient, disableTouch: true }),
         cookie: {
           maxAge: 1000 * 60 * 60 * 24 * 365 * 10, // 10 years
           httpOnly: true,
-          secure: __prod__, // https only in prod
+          secure: !__prod__, // https only in prod
           sameSite: 'strict', // csrf
         },
         secret: process.env.REDIS_SECRET,
