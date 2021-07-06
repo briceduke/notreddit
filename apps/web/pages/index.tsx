@@ -1,11 +1,12 @@
 import { NavBar } from "@notreddit/web/web-shared";
+import { withUrqlClient } from "next-urql";
+
+import { createUrqlClient } from "@notreddit/web/web-utils";
+
+import { usePostsQuery } from "../generated/graphql";
 
 export function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.scss file.
-   */
+  const [{ data }] = usePostsQuery();
   return (
     <div>
       <NavBar />
@@ -13,4 +14,4 @@ export function Index() {
   );
 }
 
-export default Index;
+export default withUrqlClient(createUrqlClient)(Index);

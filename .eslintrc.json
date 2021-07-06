@@ -8,20 +8,7 @@
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "new-cap": 0,
-        "require-jsdoc": 0,
-        "@nrwl/nx/enforce-module-boundaries": [
-          "error",
-          {
-            "enforceBuildableLibDependency": true,
-            "allow": [],
-            "depConstraints": [
-              {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
-              }
-            ]
-          }
-        ]
+        "require-jsdoc": 0
       }
     },
     {

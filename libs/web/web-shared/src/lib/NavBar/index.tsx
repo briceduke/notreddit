@@ -8,7 +8,8 @@ export interface NavBarProps { }
 export function NavBar(props: NavBarProps) {
   const [{ fetching: logoutFetching }, logout] = useLogoutMutation()
   const [{ data, fetching }] = useMeQuery()
-  let body = null
+
+  let body = null;
 
 
   if (fetching) {
