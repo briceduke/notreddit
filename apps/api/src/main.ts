@@ -9,7 +9,7 @@ import session from 'express-session';
 import { buildSchema } from 'type-graphql';
 import { createConnection } from 'typeorm';
 
-import { __prod__ } from '@notreddit/api-constants';
+import { cookieName, __prod__ } from '@notreddit/api-constants';
 import { ApiContext } from '@notreddit/api-types';
 
 import { Post } from './app/entities/Post';
@@ -42,7 +42,7 @@ try {
 
     app.use(
       session({
-        name: 'nr_qid',
+        name: cookieName,
         store: new redisStore({ client: redisClient, disableTouch: true }),
         cookie: {
           maxAge: 1000 * 60 * 60 * 24 * 365 * 10, // 10 years

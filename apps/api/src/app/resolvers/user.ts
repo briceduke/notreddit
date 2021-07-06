@@ -6,6 +6,7 @@ import { ApiContext } from '@notreddit/api-types';
 import { FieldError, UserInput, UserResponse } from '@notreddit/types';
 
 import { User } from '../entities/User';
+import { cookieName } from '@notreddit/api-constants';
 
 @Resolver()
 export class UserResolver {
@@ -111,5 +112,21 @@ export class UserResolver {
     return {
       user,
     };
+  }
+
+  // Destroys cookie
+  @Mutation(() => Boolean)
+  logout(@Ctx() { req, res }: ApiContext) {
+    new Promise((resolve) =>
+      req.session.destroy((err) => {
+        if (err) {
+          console.error(err);
+          resolve(false);
+          return;
+        }
+        res.clearCookie(cookieName);
+        resolve(true);
+      })
+    );
   }
 }
