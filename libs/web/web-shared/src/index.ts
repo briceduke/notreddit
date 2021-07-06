@@ -1,2 +1,2 @@
-export * from './lib/header';
+export * from './lib/NavBar';
 export * from './lib/input-field';

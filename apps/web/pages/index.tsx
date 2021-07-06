@@ -1,4 +1,4 @@
-import { Header } from "@notreddit/web/web-shared";
+import { NavBar } from "@notreddit/web/web-shared";
 
 export function Index() {
   /*
@@ -8,7 +8,7 @@ export function Index() {
    */
   return (
     <div>
-      <Header />
+      <NavBar />
     </div>
   );
 }
