@@ -1,11 +1,12 @@
 import Link from "next/link";
 
-import { useMeQuery } from "../../../../../../apps/web/generated/graphql";
+import { useLogoutMutation, useMeQuery } from "../../../../../../apps/web/generated/graphql";
 
 /* eslint-disable-next-line */
 export interface NavBarProps { }
 
 export function NavBar(props: NavBarProps) {
+  const [{ fetching: logoutFetching }, logout] = useLogoutMutation()
   const [{ data, fetching }] = useMeQuery()
   let body = null
 
@@ -32,7 +33,7 @@ export function NavBar(props: NavBarProps) {
     body = (
       <div className="flex-none">
         <h1 className="mr-6">{data.me.username}</h1>
-        <button className="btn btn-ghost">
+        <button className={logoutFetching ? "btn btn-ghost loading" : "btn btn-ghost"} onClick={() => { logout() }}>
           Logout
         </button>
       </div>
