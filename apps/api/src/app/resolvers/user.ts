@@ -117,6 +117,7 @@ export class UserResolver {
   // Destroys cookie
   @Mutation(() => Boolean)
   logout(@Ctx() { req, res }: ApiContext) {
+    res.clearCookie(cookieName);
     new Promise((resolve) =>
       req.session.destroy((err) => {
         if (err) {
@@ -124,7 +125,6 @@ export class UserResolver {
           resolve(false);
           return;
         }
-        res.clearCookie(cookieName);
         resolve(true);
       })
     );
