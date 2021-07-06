@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
 import { Formik, Form } from "formik";
+import { withUrqlClient } from "next-urql";
 
 import { InputField } from "@notreddit/web/web-shared";
-import { toErrorMap } from "@notreddit/web/web-utils";
+import { createUrqlClient, toErrorMap } from "@notreddit/web/web-utils";
 
 import { useRegisterMutation } from "../generated/graphql";
 
@@ -40,4 +41,4 @@ export function Register(props: RegisterProps) {
   );
 }
 
-export default Register;
+export default withUrqlClient(createUrqlClient, { ssr: true })(Register);

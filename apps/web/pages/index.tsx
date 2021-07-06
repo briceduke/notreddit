@@ -10,8 +10,9 @@ export function Index() {
   return (
     <div>
       <NavBar />
+      {!data ? <div className="loading btn btn-circle"></div> : data.posts.map((post) => <div key={post.id}>{post.content}</div>)}
     </div>
   );
 }
 
-export default withUrqlClient(createUrqlClient)(Index);
+export default withUrqlClient(createUrqlClient, { ssr: true })(Index);

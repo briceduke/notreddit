@@ -1,11 +1,11 @@
 import { useRouter } from "next/router";
 import { Formik, Form } from "formik";
+import { withUrqlClient } from "next-urql";
 
 import { InputField } from "@notreddit/web/web-shared";
-import { toErrorMap } from "@notreddit/web/web-utils";
+import { createUrqlClient, toErrorMap } from "@notreddit/web/web-utils";
 
 import { useLoginMutation } from "../generated/graphql";
-import { useState } from "react";
 
 /* eslint-disable-next-line */
 export interface LoginProps { }
@@ -41,4 +41,4 @@ export function Login(props: LoginProps) {
   );
 }
 
-export default Login;
+export default withUrqlClient(createUrqlClient, { ssr: true })(Login);
