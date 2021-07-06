@@ -31,7 +31,7 @@ export function NavBar(props: NavBarProps) {
   } else {
     body = (
       <div className="flex-none">
-        <h1 className="mr-6">{data.me.username.trim()}</h1>
+        <h1 className="mr-6">{data.me.username}</h1>
         <button className="btn btn-ghost">
           Logout
         </button>
